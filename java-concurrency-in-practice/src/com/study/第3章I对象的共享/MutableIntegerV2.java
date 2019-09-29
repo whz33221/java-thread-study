@@ -1,4 +1,4 @@
-package com.study.第3章;
+package com.study.第3章I对象的共享;
 
 /**
  * 优化地方：在set方法加上sync

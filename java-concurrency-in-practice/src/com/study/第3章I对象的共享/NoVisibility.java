@@ -1,4 +1,4 @@
-package com.study.第3章;
+package com.study.第3章I对象的共享;
 
 /**
         * 存在问题
