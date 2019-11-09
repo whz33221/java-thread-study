@@ -1,4 +1,4 @@
-package com.study.第6章I任务执行;
+package com.study.第8章I线程池的使用;
 
 public class Note {
     /**
@@ -40,10 +40,45 @@ public class Note {
      *      newCachedThreadPool：SynchronousQueue,同步队列
      *      2.队列的选择
      *          1）对于避免资源耗尽的需求：考虑使用BlockingQueue阻塞队列
-     *          2）对于非常大或无界线程池：考虑使用SynchronousQueue（直接移交，线程数
+     *          2）当线程池线程数非常多：考虑使用SynchronousQueue（直接移交，线程数
      *          达到max，将拒绝任务）避免任务排队
      *          3）控制任务执行顺序: 考虑使用LinkedBlockingQueue、ArrayBlockingQueue（先进先出）
      *          4）按优先级：考虑使用PriorityBlockingQueue
+     *          5）当任务存在依赖性：考虑使用无界线程池
+     *      3.饱和策略：当队列满的时候执行的策略
+     *          1）AbortPolicy（中止）：饱和时，抛出rejectedExcecutionException
+     *          2）Discard（抛弃）：饱和时，会悄悄抛弃该任务
+     *          3）DiscardOldest（抛弃最旧的）：实质上是抛弃下一个执行的任务，所以在优先队列中
+     *          语义就会变成抛弃优先级最高的任务
+     *          ———>所以一般该策略与优先级队列不共用
+     *          4）CallerRun（调用者执行）：饱和时，任务会由调用execute的线程自行执行。
+     *          5）特殊策略实现：信号量控制：通过信号量来控制任务量，当信号量被获取完，就无法提交
+     *          任务
+     *
+     *五、线程池的使用
+     *      1.线程工厂ThreadFactory作用
+     *          1）定义池中线程名称同时并入池的名称
+     *          2）对于某些需要利用安全策略来控制对特殊代码访问时，可以用privilegedThreadFactory
+     *          工厂来定制自己的线程工厂，创建出的线程会继承工厂权限，如果不用，创建出的线程将继承提交任务
+     *          线程的权限
+     *      2.为工厂定制线程类
+     *          1）定义池中线程名称
+     *          2）定义线程池的异常处理
+     *          3）存储以下统计信息
+     *      3.访问线程池设置器：
+     *          ExecutorService可以强转为ThreadPoolExecutor进行访问
+     *      4.扩展ThreadPoolExecutor
+     *          1）beforeExecute：任务执行前调用，如果发生异常，后续任务和afterExecute将不再执行
+     *          2）afterExecute：任务执行后调用，如果任务执行过程中异常，还是会执行
+     *          3）terminated：在线程池完成关闭操作时调用（所有任务完成且所有线程回收完）
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
      *
      *
      *

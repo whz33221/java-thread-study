@@ -1,6 +1,9 @@
 package com.study.第16章内存模型;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.LockSupport;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Note {
     /**
@@ -36,10 +39,20 @@ public class Note {
      *
      *
      */
-//    static class ResourceHolder{
-//        public static Resource resource = new Resource();
-//        public static Resource getResource(){
-//            return ResourceHolder.resource;
-//        }
-//    }
+    public static void main(String[] args) {
+        Thread thread = Thread.currentThread();
+        ReentrantLock reentrantLock = new ReentrantLock();
+        new Thread(()->{
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            LockSupport.unpark(thread);
+        }).start();
+        LockSupport.park("三国");
+        System.out.println("主线程结束");
+
+
+    }
 }
