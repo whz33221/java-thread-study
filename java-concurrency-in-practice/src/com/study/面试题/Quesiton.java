@@ -114,7 +114,6 @@ public class Quesiton {
      *      失败导致锁膨胀
      *      5》自旋锁
      *
-     * 13.为什么说 Synchronized 是非公平锁？
      *
      *
      *
@@ -128,7 +127,6 @@ public class Quesiton {
      * 15.请对比下 volatile 对比 Synchronized 的异同?
      *      volatile不能保证原子性
      *
-     * 16.Java 中的线程池是如何实现的？
      *
      * 17.创建线程池的几个核心构造参数？
      *      核心线程数据
@@ -145,13 +143,15 @@ public class Quesiton {
      *
      *
      *
-     *
-     *
+     * 16.Java 中的线程池是如何实现的？
+     * 13.为什么说 Synchronized 是非公平锁？
      * CyclicBarrier 和 CountDownLatch 看起来很相似，请对比下呢？
      * 很多人都说要慎用 ThreadLocal，谈谈你的理解，使用 ThreadLocal 需要注意些什么？
      * 请谈谈 ThreadLocal 是怎么解决并发安全的？
      * 为什么说 Synchronized 是一个悲观锁？乐观锁的实现原理又是什么？什么是
      * 乐观锁一定就是好的吗?
      * 请谈谈 ReadWriteLock 和 StampedLock。
+     *
+     *
      */
 }
