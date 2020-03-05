@@ -1,5 +1,10 @@
 package com.study.面试题;
 
+import java.lang.ref.PhantomReference;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Quesiton {
 
     /**
@@ -154,4 +159,27 @@ public class Quesiton {
      *
      *
      */
-}
+    static final Character cache[] = new Character[127 + 1];
+    public static void main(String[] args) {
+
+
+
+        for (int i = 0; i < 100; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    List<String> list = new ArrayList<String>();
+                    Random random = new Random(255);
+                    int chars1 = random.nextInt()-127;
+                    int chars2 = random.nextInt()-127;
+                    int chars3 = random.nextInt()-127;
+                    long i = 0;
+                    while (true) {
+                        list.add((char)chars1+(char)chars2+(char)chars3 + String.valueOf(i++).intern());
+                    }
+                }
+            }).start();
+            new PhantomReference<>()
+        }
+
+}}

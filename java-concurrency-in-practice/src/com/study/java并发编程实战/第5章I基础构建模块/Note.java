@@ -4,7 +4,7 @@ public class Note {
     /**
      * 基础构建模块
      *
-     * 一、同步容器类 Vector,HashTable,Collections.synchronizedCollection()，contains（）
+         * 一、同步容器类 Vector,HashTable,Collections.synchronizedCollection()，contains（）
      * 1.使用注意的点：
      *      1）他只是类线程安全，对于客户端代码应用代码部分，需要根据具体情况，判断在整个程序中
      *      是否线程安全
